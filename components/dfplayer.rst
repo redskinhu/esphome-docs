@@ -340,7 +340,7 @@ Sample code
               folder: !lambda 'return folder;'
               file: !lambda 'return file;'
 
-      - service: dfplayer_play_loo_folder
+      - service: dfplayer_play_loop_folder
         variables:
           folder: int
         then:
