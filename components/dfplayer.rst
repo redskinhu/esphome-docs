@@ -315,14 +315,17 @@ Sample code
       - service: dfplayer_next
         then:
           - dfplayer.play_next:
+
       - service: dfplayer_previous
         then:
           - dfplayer.play_previous:
+
       - service: dfplayer_play
         variables:
           file: int
         then:
           - dfplayer.play: !lambda 'return file;'
+
       - service: dfplayer_play_loop
         variables:
           file: int
@@ -331,6 +334,7 @@ Sample code
           - dfplayer.play:
               file: !lambda 'return file;'
               loop: !lambda 'return loop_;'
+
       - service: dfplayer_play_folder
         variables:
           folder: int
@@ -348,9 +352,12 @@ Sample code
               folder: !lambda 'return folder;'
               loop: True
 
-      - service: dfplayer_set_device
-        variables:
-          device: int
+      - service: dfplayer_set_device_usb
+        then:
+          - dfplayer.set_device:
+              device: USB
+
+      - service: dfplayer_set_device_tf_card
         then:
           - dfplayer.set_device:
               device: TF_CARD
@@ -360,6 +367,7 @@ Sample code
           volume: int
         then:
           - dfplayer.set_volume: !lambda 'return volume;'
+
       - service: dfplayer_set_eq
         variables:
           preset: int
